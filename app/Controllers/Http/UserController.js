@@ -9,8 +9,8 @@ class UserController {
     return users;
   }
 
-  async show({ request }) {
-    const user = await User.findOrFail(request.get().id);
+  async show({ request: { params } }) {
+    const user = await User.findOrFail(params.id);
     await user.loadMany(['bag', 'location']);
     return user;
   }
@@ -18,15 +18,16 @@ class UserController {
   async store({ request }) {
     const data = request.only(['name', 'birth', 'sex']);
     const location = request.input('location');
-    const bag = request.input('bag');
 
     const trx = await Database.beginTransaction();
 
     const user = await User.create(data, trx);
     await user.location().create(location, trx);
-    await user.bag().create(bag, trx);
+    await user.bag().create({}, trx);
 
     await trx.commit();
+
+    return user;
   }
 }
 
