@@ -4,6 +4,7 @@ const Schema = use('Schema');
 class BagSchema extends Schema {
   up() {
     this.create('bags', (table) => {
+      table.increments();
       table
         .integer('user_id')
         .notNullable()

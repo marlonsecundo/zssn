@@ -5,6 +5,10 @@ class User extends Model {
   static boot() {
     super.boot();
   }
+
+  bag() {
+    return this.hasOne('App/Models/Bag');
+  }
 }
 
 module.exports = User;
