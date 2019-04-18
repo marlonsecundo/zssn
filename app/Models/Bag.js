@@ -1,10 +1,8 @@
+
+
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model');
 
-class User extends Model {
-  static boot() {
-    super.boot();
-  }
-}
+class Bag extends Model {}
 
-module.exports = User;
+module.exports = Bag;
