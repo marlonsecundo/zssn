@@ -10,7 +10,7 @@ class UserSchema extends Schema {
         .notNullable()
         .unique();
       table.date('birth').notNullable();
-      table.string('sex', 60).notNullable();
+      table.enu('sex', ['M', 'F']).notNullable();
       table
         .integer('flags')
         .notNullable()
