@@ -9,6 +9,10 @@ class User extends Model {
   bag() {
     return this.hasOne('App/Models/Bag');
   }
+
+  location() {
+    return this.hasOne('App/Models/Location');
+  }
 }
 
 module.exports = User;

@@ -12,10 +12,6 @@ class UserSchema extends Schema {
       table.date('birth').notNullable();
       table.string('sex', 60).notNullable();
       table
-        .string('location', 255)
-        .notNullable()
-        .unique();
-      table
         .integer('flags')
         .notNullable()
         .unsigned()
