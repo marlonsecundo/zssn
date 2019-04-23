@@ -10,16 +10,18 @@ class User extends Model {
     return ['infected'];
   }
 
+  getInfected({ flags }) {
+    if (!flags) return false;
+
+    return flags.length >= 3;
+  }
+
   bag() {
     return this.hasOne('App/Models/Bag');
   }
 
   location() {
     return this.hasOne('App/Models/Location');
-  }
-
-  getInfected({ flags }) {
-    return flags >= 3;
   }
 }
 

@@ -7,12 +7,8 @@ class UserSchema extends Schema {
       table.increments();
       table.string('name', 80).notNullable();
       table.date('birth').notNullable();
-      table.enu('sex', ['M', 'F']).notNullable();
-      table
-        .integer('flags')
-        .notNullable()
-        .unsigned()
-        .defaultTo(0);
+      table.enu('sex', ['M', 'F']);
+      table.specificType('flags', 'INT[]').defaultTo('{}');
       table.timestamps();
     });
   }
