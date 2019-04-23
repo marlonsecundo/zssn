@@ -9,7 +9,7 @@ class UserController {
     return users;
   }
 
-  async show({ request: { params } }) {
+  async show({ params }) {
     const user = await User.findOrFail(params.id);
     await user.loadMany(['bag', 'location']);
     return user;
