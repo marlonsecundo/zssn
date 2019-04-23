@@ -15,8 +15,15 @@ class LocationController {
    * @param {Response} ctx.response
    */
   async update({ params, request }) {
+    const data = request.only(['x', 'y']);
+
     const user = await User.findOrFail(params.users_id);
-    const location = await user.location().save(request.input('location'));
+    const location = await user.location().fetch();
+
+    location.merge(data);
+
+    await location.save();
+
     return location;
   }
 }
