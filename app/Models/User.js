@@ -6,12 +6,20 @@ class User extends Model {
     super.boot();
   }
 
+  static get computed() {
+    return ['infected'];
+  }
+
   bag() {
     return this.hasOne('App/Models/Bag');
   }
 
   location() {
     return this.hasOne('App/Models/Location');
+  }
+
+  getInfected({ flags }) {
+    return flags >= 3;
   }
 }
 
