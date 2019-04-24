@@ -8,6 +8,12 @@ class FlagController {
     const data = [...userFlaged.flags, Number(params.users_id)];
     userFlaged.flags = [...new Set(data)];
 
+    if (userFlaged.flags.length >= 3) {
+      const bag = await userFlaged.bag().fetch();
+      bag.accessible = false;
+      bag.save();
+    }
+
     await userFlaged.save();
     return userFlaged;
   }

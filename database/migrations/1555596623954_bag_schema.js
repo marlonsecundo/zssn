@@ -28,6 +28,7 @@ class BagSchema extends Schema {
         .integer('ammo')
         .notNullable()
         .defaultTo(0);
+      table.boolean('accessible').defaultTo(true);
       table.timestamps();
     });
   }
