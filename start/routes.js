@@ -2,7 +2,9 @@
 const Route = use('Route');
 
 // Users
-Route.resource('users', 'UserController').only(['show', 'index', 'store']);
+Route.resource('users', 'UserController')
+  .only(['show', 'index', 'store'])
+  .validator(new Map([[['users.store'], ['User/Store']]]));
 
 // Location
 Route.resource('users.locations', 'LocationController').only(['update']);

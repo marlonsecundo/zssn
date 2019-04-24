@@ -1,4 +1,3 @@
-/* eslint-disable no-const-assign */
 const Bag = use('App/Models/Bag');
 
 class BarterController {
