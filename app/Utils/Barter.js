@@ -9,10 +9,6 @@ const Barber = {
     ammo: 1,
   },
   properties,
-  defaultBag: properties.reduce((prev, current, index) => {
-    prev[properties[index]] = 0;
-    return prev;
-  }, {}),
 };
 
 module.exports = Barber;
