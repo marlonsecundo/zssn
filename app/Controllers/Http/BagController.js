@@ -1,93 +1,36 @@
-'use strict'
+/* eslint-disable camelcase */
+/** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
+const Bag = use('App/Models/Bag');
 
-/** @typedef {import('@adonisjs/framework/src/Request')} Request */
-/** @typedef {import('@adonisjs/framework/src/Response')} Response */
-/** @typedef {import('@adonisjs/framework/src/View')} View */
-
-/**
- * Resourceful controller for interacting with bags
- */
 class BagController {
-  /**
-   * Show a list of all bags.
-   * GET bags
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async index ({ request, response, view }) {
+  async index() {
+    const bags = await Bag.all();
+
+    return bags;
   }
 
-  /**
-   * Render a form to be used for creating a new bag.
-   * GET bags/create
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async create ({ request, response, view }) {
+  async show({ params }) {
+    const { users_id: user_id, id } = params;
+
+    const bag = await Bag.findByOrFail({ user_id, id });
+
+    await bag.loadMany(['user']);
+
+    return bag;
   }
 
-  /**
-   * Create/save a new bag.
-   * POST bags
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
-  async store ({ request, response }) {
-  }
+  async update({ params, request }) {
+    const { users_id: user_id, id } = params;
+    const data = request.only(['water', 'food', 'ammo', 'medicine']);
 
-  /**
-   * Display a single bag.
-   * GET bags/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async show ({ params, request, response, view }) {
-  }
+    const bag = await Bag.findByOrFail({ user_id, id });
 
-  /**
-   * Render a form to update an existing bag.
-   * GET bags/:id/edit
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async edit ({ params, request, response, view }) {
-  }
+    bag.merge(data);
 
-  /**
-   * Update bag details.
-   * PUT or PATCH bags/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
-  async update ({ params, request, response }) {
-  }
+    await bag.save();
 
-  /**
-   * Delete a bag with id.
-   * DELETE bags/:id
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   */
-  async destroy ({ params, request, response }) {
+    return bag;
   }
 }
 
-module.exports = BagController
+module.exports = BagController;

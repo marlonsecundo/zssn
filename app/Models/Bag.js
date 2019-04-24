@@ -2,8 +2,12 @@
 const Model = use('Model');
 
 class Bag extends Model {
+  static boot() {
+    super.boot();
+  }
+
   user() {
-    this.belongsTo('App/Models/User');
+    return this.belongsTo('App/Models/User');
   }
 }
 
