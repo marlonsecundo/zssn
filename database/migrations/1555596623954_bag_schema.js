@@ -9,6 +9,7 @@ class BagSchema extends Schema {
         .integer('user_id')
         .notNullable()
         .unsigned()
+        .unique()
         .references('users.id')
         .onUpdate('CASCADE')
         .onDelete('CASCADE');
