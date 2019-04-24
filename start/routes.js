@@ -14,4 +14,4 @@ Route.post('users/:users_id/flags', 'FlagController.store');
 Route.resource('users.bags', 'BagController').only(['index', 'show', 'update']);
 
 // Barter
-Route.post('baters', 'BarterController.store');
+Route.post('barters', 'BarterController.store');
