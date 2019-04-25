@@ -1,3 +1,5 @@
+const Antl = use('Antl');
+
 class UserStore {
   get rules() {
     return {
@@ -17,6 +19,10 @@ class UserStore {
     return {
       birth: 'toDate',
     };
+  }
+
+  get messages() {
+    return Antl.list('validation');
   }
 }
 

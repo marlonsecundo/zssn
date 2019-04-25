@@ -1,5 +1,3 @@
-
-
 /*
 |--------------------------------------------------------------------------
 | Providers
@@ -17,6 +15,7 @@ const providers = [
   '@adonisjs/cors/providers/CorsProvider',
   '@adonisjs/lucid/providers/LucidProvider',
   '@adonisjs/validator/providers/ValidatorProvider',
+  '@adonisjs/antl/providers/AntlProvider',
 ];
 
 /*
@@ -55,5 +54,8 @@ const aliases = {};
 const commands = [];
 
 module.exports = {
-  providers, aceProviders, aliases, commands,
+  providers,
+  aceProviders,
+  aliases,
+  commands,
 };
