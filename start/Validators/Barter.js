@@ -28,7 +28,7 @@ const notEmptyBags = async (data, field, message, args, get) => {
   });
 };
 
-// Equivalent Validator
+// Equivalent Bags
 const equivalentBags = async (data, field, message, args, get) => {
   const bags = get(data, field);
   const { equivalence } = Barter;
@@ -52,7 +52,8 @@ const equivalentBags = async (data, field, message, args, get) => {
   if (scores[0] !== scores[1]) throw Antl.formatMessage('validation.fair_trade');
 };
 
-const haveItems = async (data, field, message, args, get) => {
+// Have Item
+const userHaveItems = async (data, field, message, args, get) => {
   const bags = get(data, field);
 
   const result = bags.map(async (item) => {
@@ -70,7 +71,7 @@ const haveItems = async (data, field, message, args, get) => {
 };
 
 const loadBarterValidators = () => {
-  Validator.extend('haveItems', haveItems);
+  Validator.extend('userHaveItems', userHaveItems);
   Validator.extend('notEmptyBags', notEmptyBags);
   Validator.extend('equivalentBags', equivalentBags);
 };

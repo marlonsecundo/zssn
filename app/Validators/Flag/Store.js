@@ -1,14 +1,14 @@
 const Antl = use('Antl');
 
-class BarterStore {
+class FlagStore {
   get rules() {
     return {
-      bags: 'required|array|min:2|max:2|notEmptyBags|equivalentBags|userHaveItems',
+      userId: 'required|integer|above:0',
     };
   }
 
   get validateAll() {
-    return false;
+    return true;
   }
 
   get messages() {
@@ -16,4 +16,4 @@ class BarterStore {
   }
 }
 
-module.exports = BarterStore;
+module.exports = FlagStore;
