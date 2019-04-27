@@ -3,7 +3,7 @@ const Antl = use('Antl');
 class BarterStore {
   get rules() {
     return {
-      bags: 'required|array|min:2|max:2|notEmptyBags|equivalentBags',
+      bags: 'required|array|min:2|max:2|notEmptyBags|equivalentBags|haveItems',
     };
   }
 

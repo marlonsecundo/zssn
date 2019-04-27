@@ -46,5 +46,6 @@
   "url": "The {{field}} should be a valid url.",
   "not_empty_bag": "The bags should have valids properties above 0",
   "valid_prop_bag": "The bags should have only valid properties for exchange",
-  "fair_trade": "The exchange of items should be fair"
+  "fair_trade": "The exchange of items should be fair",
+  "have_items": "The bags must have the amount of items for exchange"
 }
