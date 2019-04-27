@@ -20,4 +20,4 @@ Route.resource('users.bags', 'BagController')
   .validator(new Map([[['users.bags.update'], ['Bag/Update']]]));
 
 // Barter
-Route.post('barters', 'BarterController.store');
+Route.post('barters', 'BarterController.store').validator('Barter/Store');

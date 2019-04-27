@@ -4,8 +4,8 @@ class BarterController {
   async store({ request }) {
     const bags = request.input('bags');
 
-    const { user_id: user1, ...bag1 } = bags[0];
-    const { user_id: user2, ...bag2 } = bags[1];
+    const { userId: user1, ...bag1 } = bags[0];
+    const { userId: user2, ...bag2 } = bags[1];
 
     const userBag1 = await Bag.findByOrFail({ user_id: user1 });
     const userBag2 = await Bag.findByOrFail({ user_id: user2 });

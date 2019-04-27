@@ -43,5 +43,8 @@
   "string": "The {{field}} should be a STRING.",
   "under": "The {{field}} should be under {{argument.0}}.",
   "unique": "The {{field}} has already been taken by someone else.",
-  "url": "The {{field}} should be a valid url."
+  "url": "The {{field}} should be a valid url.",
+  "not_empty_bag": "The bags should have valids properties above 0",
+  "valid_prop_bag": "The bags should have only valid properties for exchange",
+  "fair_trade": "The exchange of items should be fair"
 }
